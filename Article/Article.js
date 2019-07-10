@@ -29,10 +29,19 @@ const newsFeed =[{
     title: "Professional Software Development in 2018",
     date: "Nov 7th, 2017",
     content: "<p>Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor. Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? </p> <p>Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor    hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? </p> <p>Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor! Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.</p><p>Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor; hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? </p>"
-  }] 
+  },
+  {
+    title: "Working with Java OOP",
+    date: "July 11, 2019",
+    content: ""
+  }
+] 
   //Getting the aritcle class
   const articles = document.querySelector('.articles');
-  articles.appendChild(newsPanel('Lambda School Students: "We\'re the best!"', 'Nov. 5th 2017', 'Information here'))
+  newsFeed.forEach(info=> {
+    articles.appendChild(newsPanel(info.title, info.date, info.content))
+  });
+  
  function newsPanel(title, date, content) {
    //Create the Elements
    const article = document.createElement('div');
@@ -55,9 +64,10 @@ const newsFeed =[{
    articleContent.textContent = content
    buttons.textContent = 'expand'
 
-   buttons.addEventListener('click', event=> {
+   buttons.addEventListener('click', ()=> {
       console.log('Clicked', event.target);
-      buttons.classList.toggle('article-open')
+      //articleContent.classList.toggle()
+     article.classList.toggle('article-open')
    });
    return article;
  }
