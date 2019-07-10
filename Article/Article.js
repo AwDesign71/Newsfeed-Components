@@ -32,26 +32,33 @@ const newsFeed =[{
   }] 
   //Getting the aritcle class
   const articles = document.querySelector('.articles');
-  articles.appendChild(newsPanel())
- function newsPanel() {
+  articles.appendChild(newsPanel('Lambda School Students: "We\'re the best!"', 'Nov. 5th 2017', 'Information here'))
+ function newsPanel(title, date, content) {
    //Create the Elements
    const article = document.createElement('div');
    const articleTitle = document.createElement('h2');
-   const date = document.createElement('p');
+   const articleDate = document.createElement('p');
    const articleContent = document.createElement('p');
    const buttons = document.createElement('span')
 
    article.appendChild(articleTitle);
-   article.appendChild(date);
+   article.appendChild(articleDate);
    article.appendChild(articleContent);
    article.appendChild(buttons);
 
    article.classList.add('article');
-    articleTitle.textContent = 'Lambda School Students: "We\'re the best!"';
-   date.classList.add('date');
-   date.textContent = 'Nov 5th, 2017'
+    articleTitle.textContent = title;
+    articleDate.classList.add('date');
+    articleDate.textContent = date
    buttons.classList.add('expandButton');
+   
+   articleContent.textContent = content
    buttons.textContent = 'expand'
+
+   buttons.addEventListener('click', event=> {
+      console.log('Clicked', event.target);
+      buttons.classList.toggle('article-open')
+   });
    return article;
  }
  
